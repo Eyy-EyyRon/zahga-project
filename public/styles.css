@@ -124,31 +124,6 @@ select {
   100% { text-shadow: 0 0 60px rgba(196, 30, 42, 0.25), 0 0 120px rgba(184, 134, 11, 0.1); }
 }
 
-/* ===== Button Ripple Effect ===== */
-.btn-ripple {
-  position: relative;
-  overflow: hidden;
-}
-.btn-ripple::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.8s;
-}
-.btn-ripple:active::after {
-  transform: scale(0, 0);
-  opacity: 0.4;
-  transition: 0s;
-}
 
 /* ===== Stat Number Counter Animation ===== */
 .stat-number {
@@ -603,36 +578,41 @@ select {
 .glow-border {
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 .glow-border::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  padding: 2px;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  margin-left: -75%;
+  margin-top: -75%;
   background: conic-gradient(
-    from var(--glow-angle, 0deg),
     #C41E2A, #B8860B, #C0C0C0, #C41E2A
   );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.4s ease;
+  pointer-events: none;
+  animation: glowSpin 3s linear infinite;
+  z-index: -2;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: #111118;
+  z-index: -1;
   pointer-events: none;
 }
 .glow-border:hover::before {
   opacity: 1;
-  animation: glowSpin 3s linear infinite;
 }
 @keyframes glowSpin {
-  to { --glow-angle: 360deg; }
-}
-@property --glow-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ===== Text Split / Reveal ===== */

@@ -206,47 +206,23 @@
         </a>
       </div>
 
-      <!-- Stats with Progress Rings -->
-      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" id="stats-section" class="mt-8 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 max-w-3xl mx-auto">
-        <div class="stat-ring-wrap" data-target="50" data-suffix="+" data-percent="50" data-color="#C41E2A">
-          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
-            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
-            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C41E2A" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="50" data-suffix="+">0+</span>
-          </div>
-          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Projects Delivered</div>
+      <!-- Stats -->
+      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" id="stats-section" class="mt-8 sm:mt-20 grid grid-cols-4 gap-2 sm:gap-8 max-w-3xl mx-auto">
+        <div class="text-center">
+          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="50" data-suffix="+">0+</div>
+          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Projects Delivered</div>
         </div>
-        <div class="stat-ring-wrap" data-target="99" data-suffix="%" data-percent="99" data-color="#B8860B">
-          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
-            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
-            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#B8860B" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="99" data-suffix="%">0%</span>
-          </div>
-          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Client Satisfaction</div>
+        <div class="text-center">
+          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="99" data-suffix="%">0%</div>
+          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Client Satisfaction</div>
         </div>
-        <div class="stat-ring-wrap" data-target="24" data-suffix="/7" data-percent="100" data-color="#C0C0C0">
-          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
-            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
-            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C0C0C0" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="24" data-suffix="/7">0/7</span>
-          </div>
-          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Support Available</div>
+        <div class="text-center">
+          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="24" data-suffix="/7">0/7</div>
+          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Support Available</div>
         </div>
-        <div class="stat-ring-wrap" data-target="3" data-suffix="x" data-percent="75" data-color="#C41E2A">
-          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
-            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
-            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C41E2A" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="3" data-suffix="x">0x</span>
-          </div>
-          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Faster Delivery</div>
+        <div class="text-center">
+          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="3" data-suffix="x">0x</div>
+          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Faster Delivery</div>
         </div>
       </div>
     </div>
@@ -964,7 +940,7 @@
       requestAnimationFrame(update);
     }
 
-    // ===== Progress Ring Animation + Counter =====
+    // ===== Counter Animation Trigger =====
     const statsSection = document.getElementById('stats-section');
     let statsCounted = false;
     if (statsSection) {
@@ -972,17 +948,8 @@
         entries.forEach(entry => {
           if (entry.isIntersecting && !statsCounted) {
             statsCounted = true;
-            const circumference = 2 * Math.PI * 34; // r=34
-            document.querySelectorAll('.stat-ring-wrap').forEach((wrap, i) => {
-              const ring = wrap.querySelector('.stat-ring-fill');
-              const pct = parseInt(wrap.getAttribute('data-percent')) || 0;
-              const offset = circumference - (pct / 100) * circumference;
-              setTimeout(() => {
-                ring.style.strokeDashoffset = offset;
-              }, i * 200);
-            });
             document.querySelectorAll('.stat-number').forEach((el, i) => {
-              setTimeout(() => animateCounter(el), i * 200);
+              setTimeout(() => animateCounter(el), i * 150);
             });
             statsObserver.disconnect();
           }

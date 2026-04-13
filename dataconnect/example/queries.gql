@@ -1,0 +1,57 @@
+mutation createContentItem($url: String!, $title: String!, $description: String, $imageUrl: String, $isPublic: Boolean!, $tags: [String!]) @auth(level: USER, insecureReason: "New content items are associated with the authenticated user, so it is safe to expose to all logged-in users.") {
+  contentItem_insert(data: {
+    url: $url,
+    title: $title,
+    description: $description,
+    imageUrl: $imageUrl,
+    isPublic: $isPublic,
+    tags: $tags,
+    userId_expr: "auth.uid",
+    createdAt_expr: "request.time"
+  }) {
+    id
+  }
+}
+
+query listPublicContentItems($limit: Int = 100, $offset: Int = 0) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it only retrieves publicly marked content items.") {
+  contentItems(where: {isPublic: {eq: true}}, orderBy: [{createdAt: DESC}], limit: $limit, offset: $offset) {
+    id
+    url
+    title
+    description
+    imageUrl
+    tags
+    createdAt
+    user {
+      displayName
+    }
+  }
+}
+
+mutation addContentItemToCollection($collectionId: UUID!, $contentItemId: UUID!, $position: Int!, $note: String) @auth(level: USER, insecureReason: "This operation allows logged-in users to manage their own collections, ensuring content items are added to their specific collections.") {
+  collectionContentItem_insert(data: {
+    collectionId: $collectionId,
+    contentItemId: $contentItemId,
+    position: $position,
+    note: $note
+  }) {
+    collectionId
+    contentItemId
+  }
+}
+
+query getUserCollections @auth(level: USER) {
+  collections(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    isPublic
+    description
+    createdAt
+    _count
+    collectionContentItems_on_collection {
+      contentItem {
+        title
+      }
+    }
+  }
+}

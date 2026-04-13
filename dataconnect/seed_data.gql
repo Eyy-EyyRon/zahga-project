@@ -1,0 +1,28 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      username: "demouser1",
+      email: "demouser1@example.com",
+      createdAt: "2024-01-01T12:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      username: "demouser2",
+      email: "demouser2@example.com",
+      createdAt: "2024-01-02T12:00:00Z"
+    }
+  ])
+  post_insertMany(data: [
+    {
+      user: "550e8400-e29b-41d4-a716-446655440000",
+      text: "This is a post from demouser1!",
+      createdAt: "2024-01-01T13:00:00Z"
+    },
+    {
+      user: "550e8400-e29b-41d4-a716-446655440001",
+      text: "Hello from demouser2!",
+      createdAt: "2024-01-02T13:00:00Z"
+    }
+  ])
+}

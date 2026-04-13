@@ -171,11 +171,59 @@ select {
 }
 
 /* ===== Responsive Tweaks ===== */
-@media (max-width: 640px) {
+
+/* Extra-small screens (< 400px) */
+@media (max-width: 399px) {
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 1.6rem !important;
+  }
+  .service-card {
+    padding: 1.25rem !important;
+  }
+  #splash .splash-logo img {
+    width: 5rem;
+    height: 5rem;
+  }
+  #splash .splash-brand img {
+    height: 2rem;
+  }
+}
+
+/* Small screens (400px – 640px) */
+@media (min-width: 400px) and (max-width: 640px) {
   h1 {
     font-size: 2.5rem !important;
   }
   h2 {
-    font-size: 2rem !important;
+    font-size: 1.85rem !important;
+  }
+}
+
+/* All mobile (< 768px) */
+@media (max-width: 767px) {
+  section .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .service-card {
+    padding: 1.5rem !important;
+  }
+  footer .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Touch-device friendly: larger tap targets */
+@media (hover: none) and (pointer: coarse) {
+  a, button {
+    min-height: 44px;
+  }
+  .nav-link, .mobile-link {
+    padding: 0.5rem 0;
   }
 }

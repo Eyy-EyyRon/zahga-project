@@ -90,26 +90,68 @@
       </a>
 
       <!-- Mobile Menu Toggle -->
-      <button id="mobile-toggle" class="md:hidden text-white">
-        <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="mobile-toggle" class="md:hidden relative w-10 h-10 flex items-center justify-center text-white z-[60]">
+        <span id="hamburger-icon" class="transition-all duration-300">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </span>
+        <span id="close-icon" class="absolute inset-0 flex items-center justify-center opacity-0 scale-75 transition-all duration-300">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </span>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-brand-darker/95 backdrop-blur-xl border-t border-brand-border">
-      <ul class="flex flex-col items-center gap-4 py-6 text-sm font-medium text-gray-300">
-        <li><a href="#home" class="mobile-link hover:text-white transition">Home</a></li>
-        <li><a href="#services" class="mobile-link hover:text-white transition">Services</a></li>
-        <li><a href="#about" class="mobile-link hover:text-white transition">About</a></li>
-        <li><a href="#team" class="mobile-link hover:text-white transition">Team</a></li>
-        <li><a href="#process" class="mobile-link hover:text-white transition">Process</a></li>
-        <li><a href="#contact" class="mobile-link hover:text-white transition">Contact</a></li>
-        <li>
-          <a href="#contact" class="inline-flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">
-            Get Started
-          </a>
-        </li>
-      </ul>
+    <!-- Mobile Menu (full-screen overlay) -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-[55] pointer-events-none opacity-0 transition-opacity duration-300">
+      <div class="absolute inset-0 bg-brand-darker/98 backdrop-blur-2xl"></div>
+      <div class="relative h-full flex flex-col items-center justify-center">
+        <ul class="flex flex-col items-center gap-1 w-full max-w-xs">
+          <li class="mobile-item w-full" style="--delay: 0ms">
+            <a href="#home" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="home" class="w-5 h-5 text-brand-red"></i>
+              <span class="text-lg font-medium text-gray-200">Home</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full" style="--delay: 50ms">
+            <a href="#services" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="layers" class="w-5 h-5 text-brand-red"></i>
+              <span class="text-lg font-medium text-gray-200">Services</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full" style="--delay: 100ms">
+            <a href="#about" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="info" class="w-5 h-5 text-brand-gold"></i>
+              <span class="text-lg font-medium text-gray-200">About</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full" style="--delay: 150ms">
+            <a href="#team" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="users" class="w-5 h-5 text-brand-gold"></i>
+              <span class="text-lg font-medium text-gray-200">Team</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full" style="--delay: 200ms">
+            <a href="#process" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="git-branch" class="w-5 h-5 text-brand-silver"></i>
+              <span class="text-lg font-medium text-gray-200">Process</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full" style="--delay: 250ms">
+            <a href="#contact" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
+              <i data-lucide="mail" class="w-5 h-5 text-brand-silver"></i>
+              <span class="text-lg font-medium text-gray-200">Contact</span>
+            </a>
+          </li>
+          <li class="mobile-item w-full mt-4" style="--delay: 300ms">
+            <a href="#contact" class="mobile-link flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 w-full">
+              Get Started
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="absolute bottom-10 flex items-center gap-3">
+          <img src="assets/Zahga.png" alt="ZAHGA" class="h-6 opacity-30" />
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -336,23 +378,21 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         <!-- Team Member 1 -->
         <div data-aos="fade-up" data-aos-delay="100" class="group">
-          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
-            <div class="relative h-44 sm:h-56 bg-gradient-to-br from-brand-red/20 to-brand-darker flex items-center justify-center overflow-hidden">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand-red/10 border-2 border-brand-red/30 flex items-center justify-center">
-                <i data-lucide="user" class="w-10 h-10 sm:w-12 sm:h-12 text-brand-red/60"></i>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+          <div class="team-card relative bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="team-img-wrap relative h-52 sm:h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="James Carter" class="team-photo w-full h-full object-cover object-center" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/20 to-transparent"></div>
             </div>
-            <div class="p-4 sm:p-5 text-center -mt-4 relative">
+            <div class="team-info p-4 sm:p-5 text-center -mt-4 relative">
               <h3 class="font-display font-semibold text-base sm:text-lg">James Carter</h3>
               <p class="text-brand-red text-sm font-medium mt-1">Founder &amp; CEO</p>
               <p class="text-gray-500 text-xs mt-2 leading-relaxed">Visionary leader driving ZAHGA's mission to deliver world-class IT solutions.</p>
               <div class="flex items-center justify-center gap-3 mt-4">
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-red/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="twitter" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-red/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
               </div>
             </div>
@@ -361,23 +401,21 @@
 
         <!-- Team Member 2 -->
         <div data-aos="fade-up" data-aos-delay="200" class="group">
-          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-1">
-            <div class="relative h-44 sm:h-56 bg-gradient-to-br from-brand-gold/20 to-brand-darker flex items-center justify-center overflow-hidden">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand-gold/10 border-2 border-brand-gold/30 flex items-center justify-center">
-                <i data-lucide="user" class="w-10 h-10 sm:w-12 sm:h-12 text-brand-gold/60"></i>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+          <div class="team-card relative bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="team-img-wrap relative h-52 sm:h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=face" alt="Maya Chen" class="team-photo w-full h-full object-cover object-center" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/20 to-transparent"></div>
             </div>
-            <div class="p-4 sm:p-5 text-center -mt-4 relative">
+            <div class="team-info p-4 sm:p-5 text-center -mt-4 relative">
               <h3 class="font-display font-semibold text-base sm:text-lg">Maya Chen</h3>
               <p class="text-brand-gold text-sm font-medium mt-1">Lead Developer</p>
               <p class="text-gray-500 text-xs mt-2 leading-relaxed">Full-stack engineer building robust, scalable web applications.</p>
               <div class="flex items-center justify-center gap-3 mt-4">
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-gold/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-gold/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-gold/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="github" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-gold/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
               </div>
             </div>
@@ -386,23 +424,21 @@
 
         <!-- Team Member 3 -->
         <div data-aos="fade-up" data-aos-delay="300" class="group">
-          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-silver/30 transition-all duration-500 hover:-translate-y-1">
-            <div class="relative h-44 sm:h-56 bg-gradient-to-br from-brand-silver/20 to-brand-darker flex items-center justify-center overflow-hidden">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand-silver/10 border-2 border-brand-silver/30 flex items-center justify-center">
-                <i data-lucide="user" class="w-10 h-10 sm:w-12 sm:h-12 text-brand-silver/60"></i>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+          <div class="team-card relative bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-silver/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="team-img-wrap relative h-52 sm:h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Liam Torres" class="team-photo w-full h-full object-cover object-center" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/20 to-transparent"></div>
             </div>
-            <div class="p-4 sm:p-5 text-center -mt-4 relative">
+            <div class="team-info p-4 sm:p-5 text-center -mt-4 relative">
               <h3 class="font-display font-semibold text-base sm:text-lg">Liam Torres</h3>
               <p class="text-brand-silver text-sm font-medium mt-1">UI/UX Designer</p>
               <p class="text-gray-500 text-xs mt-2 leading-relaxed">Crafting beautiful, intuitive interfaces that users love.</p>
               <div class="flex items-center justify-center gap-3 mt-4">
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-silver/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-silver/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-silver/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="dribbble" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-silver/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.375 0 0 5.375 0 12c0 4.991 3.657 9.128 8.438 9.879V15.01h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 3.01h-2.33v6.868C20.343 21.128 24 16.991 24 12c0-6.625-5.375-12-12-12z"/></svg>
                 </a>
               </div>
             </div>
@@ -411,23 +447,21 @@
 
         <!-- Team Member 4 -->
         <div data-aos="fade-up" data-aos-delay="400" class="group">
-          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
-            <div class="relative h-44 sm:h-56 bg-gradient-to-br from-brand-red/10 via-brand-gold/10 to-brand-darker flex items-center justify-center overflow-hidden">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand-red/10 border-2 border-brand-red/20 flex items-center justify-center">
-                <i data-lucide="user" class="w-10 h-10 sm:w-12 sm:h-12 text-brand-red/40"></i>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+          <div class="team-card relative bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="team-img-wrap relative h-52 sm:h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face" alt="Sofia Reyes" class="team-photo w-full h-full object-cover object-center" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/20 to-transparent"></div>
             </div>
-            <div class="p-4 sm:p-5 text-center -mt-4 relative">
+            <div class="team-info p-4 sm:p-5 text-center -mt-4 relative">
               <h3 class="font-display font-semibold text-base sm:text-lg">Sofia Reyes</h3>
               <p class="text-brand-red text-sm font-medium mt-1">Automation Engineer</p>
               <p class="text-gray-500 text-xs mt-2 leading-relaxed">Designing intelligent workflows and automation systems.</p>
               <div class="flex items-center justify-center gap-3 mt-4">
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-red/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
-                  <i data-lucide="github" class="w-3.5 h-3.5 text-gray-400"></i>
+                <a href="#" class="w-9 h-9 bg-white/10 hover:bg-brand-red/30 rounded-lg flex items-center justify-center transition-all duration-300">
+                  <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
               </div>
             </div>
@@ -616,14 +650,45 @@
     // Mobile menu toggle
     const mobileToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    let menuOpen = false;
+
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.remove('pointer-events-none', 'opacity-0');
+        mobileMenu.classList.add('pointer-events-auto', 'opacity-100');
+        hamburgerIcon.style.opacity = '0';
+        hamburgerIcon.style.transform = 'rotate(90deg) scale(0.5)';
+        closeIcon.style.opacity = '1';
+        closeIcon.style.transform = 'scale(1)';
+        document.body.style.overflow = 'hidden';
+        document.querySelectorAll('.mobile-item').forEach(item => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        });
+      } else {
+        mobileMenu.classList.add('pointer-events-none', 'opacity-0');
+        mobileMenu.classList.remove('pointer-events-auto', 'opacity-100');
+        hamburgerIcon.style.opacity = '1';
+        hamburgerIcon.style.transform = 'rotate(0) scale(1)';
+        closeIcon.style.opacity = '0';
+        closeIcon.style.transform = 'scale(0.75)';
+        document.body.style.overflow = '';
+        document.querySelectorAll('.mobile-item').forEach(item => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+        });
+      }
+    }
+
+    mobileToggle.addEventListener('click', toggleMenu);
 
     // Close mobile menu on link click
     document.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+        if (menuOpen) toggleMenu();
       });
     });
 

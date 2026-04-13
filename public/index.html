@@ -159,8 +159,8 @@
   <!-- ===================== HERO ===================== -->
   <section id="home" class="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center pt-20 pb-8 sm:pt-20 sm:pb-0">
     <!-- Animated Gradient Waves Background -->
-    <canvas id="hero-waves" class="absolute inset-0 w-full h-full" style="opacity:0.35"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/30 via-transparent to-brand-dark pointer-events-none"></div>
+    <canvas id="hero-waves" class="absolute inset-0 w-full h-full" style="opacity:1"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark/80 pointer-events-none"></div>
     <div class="grid-bg absolute inset-0 opacity-[0.03]"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -805,11 +805,11 @@
       window.addEventListener('resize', resize);
 
       const waves = [
-        { y: 0.35, amp: 60, freq: 0.003, speed: 0.008, color: 'rgba(196,30,42,0.12)' },
-        { y: 0.45, amp: 45, freq: 0.004, speed: 0.012, color: 'rgba(184,134,11,0.10)' },
-        { y: 0.55, amp: 55, freq: 0.0025, speed: 0.006, color: 'rgba(196,30,42,0.08)' },
-        { y: 0.65, amp: 40, freq: 0.0035, speed: 0.015, color: 'rgba(184,134,11,0.06)' },
-        { y: 0.75, amp: 50, freq: 0.002, speed: 0.01, color: 'rgba(196,30,42,0.05)' },
+        { y: 0.30, amp: 80, freq: 0.003, speed: 0.008, color: 'rgba(196,30,42,0.35)' },
+        { y: 0.42, amp: 60, freq: 0.004, speed: 0.012, color: 'rgba(184,134,11,0.25)' },
+        { y: 0.54, amp: 70, freq: 0.0025, speed: 0.006, color: 'rgba(196,30,42,0.20)' },
+        { y: 0.66, amp: 50, freq: 0.0035, speed: 0.015, color: 'rgba(184,134,11,0.15)' },
+        { y: 0.78, amp: 65, freq: 0.002, speed: 0.01, color: 'rgba(196,30,42,0.10)' },
       ];
 
       function drawWave(wave) {

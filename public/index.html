@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAHGA — IT Services & BPO Solutions</title>
+  <link rel="icon" type="image/png" href="assets/Z.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#C41E2A',
+              gold: '#B8860B',
+              silver: '#C0C0C0',
+              dark: '#0A0A0F',
+              darker: '#060609',
+              card: '#111118',
+              border: '#1E1E2A',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- ===================== SPLASH SCREEN ===================== -->
+  <div id="splash" class="fixed inset-0 z-[999] bg-brand-darker flex items-center justify-center">
+    <div class="splash-content flex flex-col items-center">
+      <!-- Animated Z logo -->
+      <div class="splash-logo mb-6">
+        <img src="assets/Z.png" alt="Z" class="w-28 h-28 object-contain" />
+      </div>
+      <!-- Full logo fades in after Z -->
+      <div class="splash-brand opacity-0">
+        <img src="assets/Zahga.png" alt="ZAHGA" class="h-12 object-contain" />
+      </div>
+      <!-- Loading bar -->
+      <div class="mt-8 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+        <div class="splash-bar h-full bg-gradient-to-r from-brand-red to-brand-gold rounded-full"></div>
+      </div>
+      <!-- Tagline -->
+      <p class="splash-tagline mt-4 text-xs text-gray-600 tracking-widest uppercase opacity-0">IT Services &amp; BPO Solutions</p>
+    </div>
+  </div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="assets/Zahga.png" alt="ZAHGA" class="h-10" />
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <li><a href="#home" class="nav-link hover:text-white transition">Home</a></li>
+        <li><a href="#services" class="nav-link hover:text-white transition">Services</a></li>
+        <li><a href="#about" class="nav-link hover:text-white transition">About</a></li>
+        <li><a href="#team" class="nav-link hover:text-white transition">Team</a></li>
+        <li><a href="#process" class="nav-link hover:text-white transition">Process</a></li>
+        <li><a href="#contact" class="nav-link hover:text-white transition">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-900/30">
+        Get Started
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-toggle" class="md:hidden text-white">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-brand-darker/95 backdrop-blur-xl border-t border-brand-border">
+      <ul class="flex flex-col items-center gap-4 py-6 text-sm font-medium text-gray-300">
+        <li><a href="#home" class="mobile-link hover:text-white transition">Home</a></li>
+        <li><a href="#services" class="mobile-link hover:text-white transition">Services</a></li>
+        <li><a href="#about" class="mobile-link hover:text-white transition">About</a></li>
+        <li><a href="#team" class="mobile-link hover:text-white transition">Team</a></li>
+        <li><a href="#process" class="mobile-link hover:text-white transition">Process</a></li>
+        <li><a href="#contact" class="mobile-link hover:text-white transition">Contact</a></li>
+        <li>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">
+            Get Started
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="hero-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-red/5 rounded-full blur-[150px]"></div>
+      <div class="absolute top-20 right-20 w-72 h-72 bg-brand-gold/5 rounded-full blur-[120px]"></div>
+      <div class="grid-bg absolute inset-0 opacity-[0.03]"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 text-center">
+      <div data-aos="fade-up" data-aos-duration="800">
+        <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-8 text-sm text-gray-400">
+          <span class="w-2 h-2 bg-brand-red rounded-full animate-pulse"></span>
+          IT Services &amp; BPO Solutions
+        </div>
+      </div>
+
+      <h1 data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight mb-6">
+        We Build Digital<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-red-400 to-brand-gold">Solutions</span> That Scale
+      </h1>
+
+      <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10 leading-relaxed">
+        From stunning landing pages to powerful full-stack applications and intelligent automation — ZAHGA transforms your vision into technology that drives results.
+      </p>
+
+      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="group inline-flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-red-900/30 hover:-translate-y-0.5">
+          Start Your Project
+          <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#services" class="inline-flex items-center gap-2 border border-white/10 hover:border-white/25 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:bg-white/5">
+          Explore Services
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-display font-bold text-white">50+</div>
+          <div class="text-sm text-gray-500 mt-1">Projects Delivered</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-display font-bold text-white">99%</div>
+          <div class="text-sm text-gray-500 mt-1">Client Satisfaction</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-display font-bold text-white">24/7</div>
+          <div class="text-sm text-gray-500 mt-1">Support Available</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-display font-bold text-white">3x</div>
+          <div class="text-sm text-gray-500 mt-1">Faster Delivery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <i data-lucide="chevron-down" class="w-6 h-6 text-gray-500"></i>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="relative py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p data-aos="fade-up" class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">What We Do</p>
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-5xl font-bold mb-4">Our Core Services</h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="max-w-xl mx-auto text-gray-400">We deliver end-to-end IT solutions tailored to your business needs, ensuring quality at every step.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div data-aos="fade-up" data-aos-delay="100" class="service-card group relative bg-brand-card border border-brand-border rounded-2xl p-8 hover:border-brand-red/30 transition-all duration-500">
+          <div class="absolute inset-0 bg-gradient-to-b from-brand-red/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 bg-brand-red/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red/20 transition-colors">
+              <i data-lucide="layout" class="w-7 h-7 text-brand-red"></i>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">Landing Page Design &amp; Development</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">Pixel-perfect, conversion-optimized landing pages that captivate your audience and drive action. Responsive, fast, and beautiful.</p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-red"></i> Custom UI/UX Design</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-red"></i> Mobile-First Responsive</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-red"></i> SEO Optimized</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-red"></i> Fast Load Times</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div data-aos="fade-up" data-aos-delay="200" class="service-card group relative bg-brand-card border border-brand-border rounded-2xl p-8 hover:border-brand-gold/30 transition-all duration-500">
+          <div class="absolute inset-0 bg-gradient-to-b from-brand-gold/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 bg-brand-gold/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-gold/20 transition-colors">
+              <i data-lucide="bot" class="w-7 h-7 text-brand-gold"></i>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">Automation Solutions</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">Streamline repetitive tasks, boost efficiency, and reduce costs with intelligent automation tailored to your workflows.</p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Workflow Automation</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> API Integrations</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Data Processing</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Custom Bot Development</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div data-aos="fade-up" data-aos-delay="300" class="service-card group relative bg-brand-card border border-brand-border rounded-2xl p-8 hover:border-brand-silver/30 transition-all duration-500">
+          <div class="absolute inset-0 bg-gradient-to-b from-brand-silver/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative">
+            <div class="w-14 h-14 bg-brand-silver/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-silver/20 transition-colors">
+              <i data-lucide="code-2" class="w-7 h-7 text-brand-silver"></i>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-3">Full-Stack Web Development</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">Robust, scalable web applications built with modern technologies. From frontend to backend, database to deployment.</p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-silver"></i> React / Next.js Frontend</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-silver"></i> Node.js / Python Backend</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-silver"></i> Database Architecture</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-silver"></i> Cloud Deployment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="relative py-28">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-darker via-brand-dark to-brand-darker"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p data-aos="fade-right" class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">About Us</p>
+          <h2 data-aos="fade-right" data-aos-delay="100" class="font-display text-4xl sm:text-5xl font-bold mb-6">Why Choose <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-gold">ZAHGA</span>?</h2>
+          <p data-aos="fade-right" data-aos-delay="200" class="text-gray-400 leading-relaxed mb-6">
+            ZAHGA is a results-driven BPO company specializing in IT services. We combine technical expertise with a deep understanding of business processes to deliver solutions that don't just work — they excel.
+          </p>
+          <p data-aos="fade-right" data-aos-delay="300" class="text-gray-400 leading-relaxed mb-8">
+            Our team of skilled developers, designers, and automation engineers work closely with you to turn complex challenges into elegant, scalable solutions. We are committed to quality, transparency, and delivering on time.
+          </p>
+
+          <div data-aos="fade-right" data-aos-delay="400" class="grid grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="shield-check" class="w-5 h-5 text-brand-red"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm">Quality First</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Enterprise-grade code quality</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-brand-gold/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="clock" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm">On-Time Delivery</h4>
+                <p class="text-xs text-gray-500 mt-0.5">We respect your deadlines</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-brand-silver/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="users" class="w-5 h-5 text-brand-silver"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm">Dedicated Team</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Experts assigned to you</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="headphones" class="w-5 h-5 text-brand-red"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm">24/7 Support</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Always here when you need us</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Visual -->
+        <div data-aos="fade-left" data-aos-delay="200" class="relative">
+          <div class="relative bg-brand-card border border-brand-border rounded-2xl p-10 overflow-hidden">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-brand-red/10 blur-[80px] rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-gold/10 blur-[80px] rounded-full"></div>
+            <div class="relative flex flex-col items-center text-center">
+              <img src="assets/Zahga.png" alt="ZAHGA Logo" class="w-64 mb-8" />
+              <div class="text-4xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-silver to-gray-400">IT Excellence</div>
+              <p class="text-gray-500 text-sm">Business Process Outsourcing</p>
+              <div class="mt-8 flex items-center gap-6 text-sm text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="globe" class="w-4 h-4 text-brand-red"></i>
+                  Global Reach
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="zap" class="w-4 h-4 text-brand-gold"></i>
+                  Fast Turnaround
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section id="team" class="relative py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p data-aos="fade-up" class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">Our People</p>
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-5xl font-bold mb-4">Meet Our Team</h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="max-w-xl mx-auto text-gray-400">The talented people behind ZAHGA who turn ideas into powerful digital solutions.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Team Member 1 -->
+        <div data-aos="fade-up" data-aos-delay="100" class="group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="relative h-56 bg-gradient-to-br from-brand-red/20 to-brand-darker flex items-center justify-center overflow-hidden">
+              <div class="w-24 h-24 rounded-full bg-brand-red/10 border-2 border-brand-red/30 flex items-center justify-center">
+                <i data-lucide="user" class="w-12 h-12 text-brand-red/60"></i>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+            </div>
+            <div class="p-5 text-center -mt-4 relative">
+              <h3 class="font-display font-semibold text-lg">Ahron P.</h3>
+              <p class="text-brand-red text-sm font-medium mt-1">Founder & CEO</p>
+              <p class="text-gray-500 text-xs mt-2 leading-relaxed">Visionary leader driving ZAHGA's mission to deliver world-class IT solutions.</p>
+              <div class="flex items-center justify-center gap-3 mt-4">
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-red"></i>
+                </a>
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="twitter" class="w-3.5 h-3.5 text-gray-400 group-hover:text-brand-red"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div data-aos="fade-up" data-aos-delay="200" class="group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="relative h-56 bg-gradient-to-br from-brand-gold/20 to-brand-darker flex items-center justify-center overflow-hidden">
+              <div class="w-24 h-24 rounded-full bg-brand-gold/10 border-2 border-brand-gold/30 flex items-center justify-center">
+                <i data-lucide="user" class="w-12 h-12 text-brand-gold/60"></i>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+            </div>
+            <div class="p-5 text-center -mt-4 relative">
+              <h3 class="font-display font-semibold text-lg">Team Member</h3>
+              <p class="text-brand-gold text-sm font-medium mt-1">Lead Developer</p>
+              <p class="text-gray-500 text-xs mt-2 leading-relaxed">Full-stack engineer building robust, scalable web applications.</p>
+              <div class="flex items-center justify-center gap-3 mt-4">
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-gold/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-gold/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="github" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div data-aos="fade-up" data-aos-delay="300" class="group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-silver/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="relative h-56 bg-gradient-to-br from-brand-silver/20 to-brand-darker flex items-center justify-center overflow-hidden">
+              <div class="w-24 h-24 rounded-full bg-brand-silver/10 border-2 border-brand-silver/30 flex items-center justify-center">
+                <i data-lucide="user" class="w-12 h-12 text-brand-silver/60"></i>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+            </div>
+            <div class="p-5 text-center -mt-4 relative">
+              <h3 class="font-display font-semibold text-lg">Team Member</h3>
+              <p class="text-brand-silver text-sm font-medium mt-1">UI/UX Designer</p>
+              <p class="text-gray-500 text-xs mt-2 leading-relaxed">Crafting beautiful, intuitive interfaces that users love.</p>
+              <div class="flex items-center justify-center gap-3 mt-4">
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-silver/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-silver/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="dribbble" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div data-aos="fade-up" data-aos-delay="400" class="group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/30 transition-all duration-500 hover:-translate-y-1">
+            <div class="relative h-56 bg-gradient-to-br from-brand-red/10 via-brand-gold/10 to-brand-darker flex items-center justify-center overflow-hidden">
+              <div class="w-24 h-24 rounded-full bg-brand-red/10 border-2 border-brand-red/20 flex items-center justify-center">
+                <i data-lucide="user" class="w-12 h-12 text-brand-red/40"></i>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent"></div>
+            </div>
+            <div class="p-5 text-center -mt-4 relative">
+              <h3 class="font-display font-semibold text-lg">Team Member</h3>
+              <p class="text-brand-red text-sm font-medium mt-1">Automation Engineer</p>
+              <p class="text-gray-500 text-xs mt-2 leading-relaxed">Designing intelligent workflows and automation systems.</p>
+              <div class="flex items-center justify-center gap-3 mt-4">
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="linkedin" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+                <a href="#" class="w-8 h-8 bg-white/5 hover:bg-brand-red/20 rounded-lg flex items-center justify-center transition">
+                  <i data-lucide="github" class="w-3.5 h-3.5 text-gray-400"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section id="process" class="relative py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p data-aos="fade-up" class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">How We Work</p>
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-display text-4xl sm:text-5xl font-bold mb-4">Our Process</h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="max-w-xl mx-auto text-gray-400">A streamlined, transparent approach that keeps you in the loop from start to finish.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div data-aos="fade-up" data-aos-delay="100" class="relative group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-red/30 transition-all duration-500 h-full">
+            <div class="text-5xl font-display font-bold text-brand-red/20 mb-4">01</div>
+            <h3 class="font-display text-lg font-semibold mb-2">Discovery</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">We listen to understand your goals, audience, and requirements in detail.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div data-aos="fade-up" data-aos-delay="200" class="relative group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-gold/30 transition-all duration-500 h-full">
+            <div class="text-5xl font-display font-bold text-brand-gold/20 mb-4">02</div>
+            <h3 class="font-display text-lg font-semibold mb-2">Strategy &amp; Design</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">We plan the architecture and create designs that align with your brand and goals.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div data-aos="fade-up" data-aos-delay="300" class="relative group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-silver/30 transition-all duration-500 h-full">
+            <div class="text-5xl font-display font-bold text-brand-silver/20 mb-4">03</div>
+            <h3 class="font-display text-lg font-semibold mb-2">Development</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Our engineers build your solution with clean, scalable, production-ready code.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div data-aos="fade-up" data-aos-delay="400" class="relative group">
+          <div class="bg-brand-card border border-brand-border rounded-2xl p-6 hover:border-brand-red/30 transition-all duration-500 h-full">
+            <div class="text-5xl font-display font-bold text-brand-red/20 mb-4">04</div>
+            <h3 class="font-display text-lg font-semibold mb-2">Launch &amp; Support</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">We deploy, monitor, and provide ongoing support to ensure everything runs smoothly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / CTA ===================== -->
+  <section id="contact" class="relative py-28">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-darker to-brand-dark"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Left: Info -->
+        <div>
+          <p data-aos="fade-right" class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">Get In Touch</p>
+          <h2 data-aos="fade-right" data-aos-delay="100" class="font-display text-4xl sm:text-5xl font-bold mb-6">Let's Build Something <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-gold">Great Together</span></h2>
+          <p data-aos="fade-right" data-aos-delay="200" class="text-gray-400 leading-relaxed mb-10">
+            Ready to transform your business with technology? Tell us about your project and we'll get back to you within 24 hours.
+          </p>
+
+          <div data-aos="fade-right" data-aos-delay="300" class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-brand-red/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="mail" class="w-5 h-5 text-brand-red"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Email Us</p>
+                <p class="font-medium">contact@zahga.com</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="phone" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Call Us</p>
+                <p class="font-medium">+1 (555) 000-0000</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-brand-silver/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5 text-brand-silver"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Location</p>
+                <p class="font-medium">Available Worldwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div data-aos="fade-left" data-aos-delay="200">
+          <form id="contact-form" class="bg-brand-card border border-brand-border rounded-2xl p-8 space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">First Name</label>
+                <input type="text" placeholder="John" class="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/50 transition" />
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">Last Name</label>
+                <input type="text" placeholder="Doe" class="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/50 transition" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Email</label>
+              <input type="email" placeholder="john@company.com" class="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/50 transition" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Service Needed</label>
+              <select class="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-brand-red/50 transition appearance-none">
+                <option value="">Select a service</option>
+                <option value="landing">Landing Page Design & Development</option>
+                <option value="automation">Automation Solutions</option>
+                <option value="fullstack">Full-Stack Web Development</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Message</label>
+              <textarea rows="4" placeholder="Tell us about your project..." class="w-full bg-brand-darker border border-brand-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-brand-red/50 transition resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-brand-red hover:bg-red-700 text-white font-semibold py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-900/30 flex items-center justify-center gap-2">
+              Send Message
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t border-brand-border py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/Zahga.png" alt="ZAHGA" class="h-8" />
+        </div>
+
+        <ul class="flex items-center gap-6 text-sm text-gray-500">
+          <li><a href="#home" class="hover:text-white transition">Home</a></li>
+          <li><a href="#services" class="hover:text-white transition">Services</a></li>
+          <li><a href="#about" class="hover:text-white transition">About</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+        </ul>
+
+        <p class="text-sm text-gray-600">&copy; 2026 ZAHGA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      easing: 'ease-out-cubic',
+    });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-brand-darker/80', 'backdrop-blur-xl', 'border-b', 'border-brand-border');
+      } else {
+        navbar.classList.remove('bg-brand-darker/80', 'backdrop-blur-xl', 'border-b', 'border-brand-border');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Splash screen
+    const splash = document.getElementById('splash');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      splash.classList.add('splash-fade-out');
+      document.body.style.overflow = '';
+      splash.addEventListener('transitionend', () => {
+        splash.remove();
+      });
+    }, 2800);
+
+    // Contact form handler
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.innerHTML = '<span>Message Sent!</span>';
+      btn.classList.remove('bg-brand-red', 'hover:bg-red-700');
+      btn.classList.add('bg-green-600');
+      setTimeout(() => {
+        btn.innerHTML = 'Send Message <i data-lucide="send" class="w-4 h-4"></i>';
+        btn.classList.add('bg-brand-red', 'hover:bg-red-700');
+        btn.classList.remove('bg-green-600');
+        lucide.createIcons();
+        this.reset();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

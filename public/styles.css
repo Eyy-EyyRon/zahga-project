@@ -1,0 +1,181 @@
+/* ===== Base ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+::selection {
+  background: rgba(196, 30, 42, 0.3);
+  color: #fff;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E1E2A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C41E2A;
+}
+
+/* ===== Grid Background ===== */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ===== Hero Glow Animation ===== */
+.hero-glow {
+  animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* ===== Service Card Hover ===== */
+.service-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px -15px rgba(196, 30, 42, 0.1);
+}
+
+/* ===== Smooth Section Transitions ===== */
+section {
+  position: relative;
+}
+
+/* ===== Form Input Focus Glow ===== */
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(196, 30, 42, 0.1);
+}
+
+/* ===== Custom Select Arrow ===== */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* ===== Nav Link Active State ===== */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #C41E2A;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== Splash Screen ===== */
+#splash {
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#splash.splash-fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-logo {
+  animation: splashLogoIn 0.8s ease-out forwards;
+}
+
+@keyframes splashLogoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.splash-brand {
+  animation: splashBrandIn 0.6s ease-out 0.7s forwards;
+}
+
+@keyframes splashBrandIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.splash-bar {
+  animation: splashBarFill 2.2s ease-in-out 0.5s forwards;
+  width: 0;
+}
+
+@keyframes splashBarFill {
+  0% { width: 0; }
+  30% { width: 40%; }
+  70% { width: 75%; }
+  100% { width: 100%; }
+}
+
+.splash-tagline {
+  animation: splashTaglineIn 0.5s ease-out 1.2s forwards;
+}
+
+@keyframes splashTaglineIn {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.3em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  h2 {
+    font-size: 2rem !important;
+  }
+}

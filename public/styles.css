@@ -112,68 +112,64 @@ select {
   transition-delay: var(--delay, 0ms);
 }
 
-/* ===== Team Card Hover — Photo Takes Over ===== */
+/* ===== Team Card — Photo Always Fills Card ===== */
 .team-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 420px;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 420px !important;
+  overflow: hidden !important;
 }
 
 .team-img-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 45%;
-  z-index: 1;
-  overflow: hidden;
-  transition: bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
 }
 
 .team-img-wrap .team-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, #111118 0%, rgba(17,17,24,0.3) 50%, transparent 100%);
-  transition: background 0.6s ease;
-  pointer-events: none;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(to top, #111118 0%, #111118 40%, rgba(17,17,24,0.6) 65%, transparent 100%) !important;
+  transition: background 0.6s ease !important;
+  pointer-events: none !important;
 }
 
 .team-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
   will-change: transform;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .team-info {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative !important;
+  z-index: 2 !important;
+  margin-top: auto !important;
+  transition: all 0.5s ease !important;
 }
 
-/* Hover: image fills the entire card */
-.group:hover .team-img-wrap {
-  bottom: 0;
+/* Hover: reveal the full photo behind the text */
+.group:hover .team-img-wrap .team-overlay {
+  background: linear-gradient(to top, rgba(6,6,9,0.95) 0%, rgba(6,6,9,0.6) 40%, transparent 100%) !important;
 }
 
 .group:hover .team-photo {
-  transform: scale(1.05);
-}
-
-.group:hover .team-img-wrap .team-overlay {
-  background: linear-gradient(to top, rgba(6,6,9,0.95) 0%, rgba(6,6,9,0.7) 45%, transparent 100%);
+  transform: scale(1.08) !important;
 }
 
 .group:hover .team-info h3,
 .group:hover .team-info .team-desc {
-  color: #fff;
+  color: #fff !important;
 }
 
 /* ===== Social Icons ===== */
@@ -260,18 +256,115 @@ select {
 
 /* ===== Responsive Tweaks ===== */
 
+/* All mobile (< 768px) */
+@media (max-width: 767px) {
+  /* Global section spacing */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  section .max-w-7xl,
+  footer .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Hero section */
+  #home {
+    padding-top: 5rem !important;
+    padding-bottom: 2rem !important;
+    min-height: auto !important;
+  }
+  #home h1 {
+    font-size: 2.25rem !important;
+    line-height: 1.15 !important;
+  }
+  #home p.text-lg,
+  #home p.sm\:text-xl {
+    font-size: 1rem !important;
+  }
+
+  /* Services */
+  .service-card {
+    padding: 1.5rem !important;
+  }
+
+  /* About — features grid */
+  #about .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  #about .bg-brand-card.p-10 {
+    padding: 2rem !important;
+  }
+
+  /* Team cards */
+  .team-card {
+    min-height: 360px !important;
+  }
+  .team-info {
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Process */
+  #process .grid {
+    gap: 0.75rem !important;
+  }
+
+  /* Contact form */
+  #contact-form {
+    padding: 1.25rem !important;
+  }
+
+  /* Footer */
+  footer {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Section headings */
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  .text-center.mb-16 {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Mobile menu responsive */
+  #mobile-menu ul {
+    max-width: 100% !important;
+    padding: 0 1.5rem !important;
+  }
+  #mobile-menu .mobile-link {
+    padding: 12px 20px !important;
+  }
+  #mobile-menu .mobile-link span {
+    font-size: 16px !important;
+  }
+  #mobile-menu .mobile-link svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
 /* Extra-small screens (< 400px) */
 @media (max-width: 399px) {
-  h1 {
-    font-size: 2rem !important;
-    line-height: 1.2 !important;
+  #home h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.15 !important;
   }
   h2 {
-    font-size: 1.6rem !important;
+    font-size: 1.5rem !important;
+  }
+  #home p.text-lg,
+  #home p.sm\:text-xl {
+    font-size: 0.875rem !important;
   }
   .service-card {
     padding: 1.25rem !important;
   }
+
+  /* Splash screen */
   #splash .splash-logo img {
     width: 5rem;
     height: 5rem;
@@ -279,30 +372,44 @@ select {
   #splash .splash-brand img {
     height: 2rem;
   }
+
+  /* Team cards smaller on tiny screens */
+  .team-card {
+    min-height: 320px !important;
+  }
+
+  /* Stats grid */
+  #home .grid-cols-2 {
+    gap: 0.75rem !important;
+  }
+  #home .text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  /* Mobile menu compact */
+  #mobile-menu .mobile-link {
+    padding: 10px 16px !important;
+    gap: 12px !important;
+  }
+  #mobile-menu .mobile-link span {
+    font-size: 15px !important;
+  }
 }
 
 /* Small screens (400px – 640px) */
 @media (min-width: 400px) and (max-width: 640px) {
-  h1 {
+  #home h1 {
     font-size: 2.5rem !important;
   }
   h2 {
-    font-size: 1.85rem !important;
+    font-size: 2rem !important;
   }
 }
 
-/* All mobile (< 768px) */
-@media (max-width: 767px) {
-  section .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .service-card {
-    padding: 1.5rem !important;
-  }
-  footer .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* Medium screens (641px – 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .team-card {
+    min-height: 380px !important;
   }
 }
 
@@ -311,7 +418,18 @@ select {
   a, button {
     min-height: 44px;
   }
-  .nav-link, .mobile-link {
+  .nav-link {
     padding: 0.5rem 0;
+  }
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+  #mobile-menu > div:last-child {
+    padding-bottom: max(40px, env(safe-area-inset-bottom)) !important;
+  }
+  nav .max-w-7xl {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
   }
 }

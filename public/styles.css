@@ -318,6 +318,120 @@ select {
   }
 }
 
+/* ===== Custom Cursor Trail (Desktop Only) ===== */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #C41E2A;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.1s ease, opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(196, 30, 42, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring.hover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(184, 134, 11, 0.6);
+}
+
+/* ===== Card Tilt 3D ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+.tilt-card .relative {
+  transform: translateZ(20px);
+}
+
+/* ===== Image Skeleton Shimmer ===== */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #111118 25%, #1a1a25 50%, #111118 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.img-loaded {
+  animation: imgFadeIn 0.5s ease forwards;
+}
+@keyframes imgFadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Testimonials / Logos Carousel ===== */
+.logo-carousel {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.logo-track {
+  display: flex;
+  gap: 3rem;
+  animation: scrollLogos 25s linear infinite;
+  width: max-content;
+}
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.logo-track:hover {
+  animation-play-state: paused;
+}
+.testimonial-card {
+  flex-shrink: 0;
+  width: 320px;
+  background: rgba(17, 17, 24, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.testimonial-card:hover {
+  border-color: rgba(196, 30, 42, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== Section Reveal on Scroll ===== */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.reveal-section.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger-child.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
 /* ===== Responsive Tweaks ===== */
 
 /* All mobile (< 768px) */

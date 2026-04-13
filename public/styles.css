@@ -427,6 +427,59 @@ select {
   transform: translateY(0);
 }
 
+/* ===== Parallax Layers ===== */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ===== Typewriter Cursor ===== */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  background: #C41E2A;
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  animation: cursorBlink 0.7s step-end infinite;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ===== Particles Canvas ===== */
+#particles-canvas {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ===== Progress Ring Stats ===== */
+.stat-ring-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-ring-wrap svg {
+  transform: rotate(-90deg);
+}
+.stat-ring-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+}
+.stat-ring-fill {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 /* Hide custom cursor on touch devices */
 @media (hover: none) and (pointer: coarse) {
   .cursor-dot, .cursor-ring { display: none !important; }

@@ -46,13 +46,16 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden">
 
   <!-- Custom Cursor (desktop only) -->
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Floating Particles Background -->
+  <canvas id="particles-canvas"></canvas>
 
   <!-- ===================== SPLASH SCREEN ===================== -->
   <div id="splash" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:#060609;display:flex;align-items:center;justify-content:center;overflow:hidden">
@@ -172,13 +175,13 @@
     <!-- Animated Gradient Waves Background -->
     <canvas id="hero-waves" class="absolute inset-0 w-full h-full" style="opacity:1"></canvas>
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark/80 pointer-events-none"></div>
-    <div class="grid-bg absolute inset-0 opacity-[0.03]"></div>
+    <div class="grid-bg parallax-layer absolute inset-0 opacity-[0.03]" data-parallax-speed="0.15"></div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
 
       <h1 data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight mb-4 sm:mb-6">
         We Build Digital<br />
-        <span class="gradient-text-anim">Solutions</span> That Scale
+        <span id="typewriter-text" class="gradient-text-anim">Solutions</span><span class="typewriter-cursor"></span> That Scale
       </h1>
 
       <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="max-w-2xl mx-auto text-sm sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-10 leading-relaxed px-2 sm:px-0">
@@ -195,23 +198,47 @@
         </a>
       </div>
 
-      <!-- Stats -->
-      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" id="stats-section" class="mt-8 sm:mt-20 grid grid-cols-4 gap-2 sm:gap-8 max-w-3xl mx-auto">
-        <div class="text-center">
-          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="50" data-suffix="+">0+</div>
-          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Projects Delivered</div>
+      <!-- Stats with Progress Rings -->
+      <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500" id="stats-section" class="mt-8 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 max-w-3xl mx-auto">
+        <div class="stat-ring-wrap" data-target="50" data-suffix="+" data-percent="50" data-color="#C41E2A">
+          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
+            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
+            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C41E2A" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="50" data-suffix="+">0+</span>
+          </div>
+          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Projects Delivered</div>
         </div>
-        <div class="text-center">
-          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="99" data-suffix="%">0%</div>
-          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Client Satisfaction</div>
+        <div class="stat-ring-wrap" data-target="99" data-suffix="%" data-percent="99" data-color="#B8860B">
+          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
+            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
+            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#B8860B" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="99" data-suffix="%">0%</span>
+          </div>
+          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Client Satisfaction</div>
         </div>
-        <div class="text-center">
-          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="24" data-suffix="/7">0/7</div>
-          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Support Available</div>
+        <div class="stat-ring-wrap" data-target="24" data-suffix="/7" data-percent="100" data-color="#C0C0C0">
+          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
+            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
+            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C0C0C0" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="24" data-suffix="/7">0/7</span>
+          </div>
+          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Support Available</div>
         </div>
-        <div class="text-center">
-          <div class="stat-number text-xl sm:text-3xl font-display font-bold text-white" data-target="3" data-suffix="x">0x</div>
-          <div class="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">Faster Delivery</div>
+        <div class="stat-ring-wrap" data-target="3" data-suffix="x" data-percent="75" data-color="#C41E2A">
+          <svg width="80" height="80" viewBox="0 0 80 80" class="sm:w-[100px] sm:h-[100px]">
+            <circle class="stat-ring-bg" cx="40" cy="40" r="34" stroke-width="5"/>
+            <circle class="stat-ring-fill" cx="40" cy="40" r="34" stroke-width="5" stroke="#C41E2A" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="stat-number text-lg sm:text-2xl font-display font-bold text-white" data-target="3" data-suffix="x">0x</span>
+          </div>
+          <div class="text-[10px] sm:text-xs text-gray-500 mt-2 text-center">Faster Delivery</div>
         </div>
       </div>
     </div>
@@ -347,8 +374,8 @@
         <!-- Right: Visual -->
         <div data-aos="fade-up" data-aos-delay="200" class="relative">
           <div class="relative bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-10 overflow-hidden">
-            <div class="absolute top-0 right-0 w-40 h-40 bg-brand-red/10 blur-[80px] rounded-full"></div>
-            <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-gold/10 blur-[80px] rounded-full"></div>
+            <div class="parallax-layer absolute top-0 right-0 w-40 h-40 bg-brand-red/10 blur-[80px] rounded-full" data-parallax-speed="0.2"></div>
+            <div class="parallax-layer absolute bottom-0 left-0 w-40 h-40 bg-brand-gold/10 blur-[80px] rounded-full" data-parallax-speed="0.3"></div>
             <div class="relative flex flex-col items-center text-center">
               <img src="assets/Zahga.png" alt="ZAHGA Logo" class="w-48 sm:w-64 mb-6 sm:mb-8" />
               <div class="text-2xl sm:text-4xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-silver to-gray-400">IT Excellence</div>
@@ -877,7 +904,6 @@
       function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease-out cubic for smooth deceleration
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(eased * target);
         el.textContent = current + suffix;
@@ -892,7 +918,7 @@
       requestAnimationFrame(update);
     }
 
-    // Use IntersectionObserver to trigger counters when stats scroll into view
+    // ===== Progress Ring Animation + Counter =====
     const statsSection = document.getElementById('stats-section');
     let statsCounted = false;
     if (statsSection) {
@@ -900,8 +926,17 @@
         entries.forEach(entry => {
           if (entry.isIntersecting && !statsCounted) {
             statsCounted = true;
+            const circumference = 2 * Math.PI * 34; // r=34
+            document.querySelectorAll('.stat-ring-wrap').forEach((wrap, i) => {
+              const ring = wrap.querySelector('.stat-ring-fill');
+              const pct = parseInt(wrap.getAttribute('data-percent')) || 0;
+              const offset = circumference - (pct / 100) * circumference;
+              setTimeout(() => {
+                ring.style.strokeDashoffset = offset;
+              }, i * 200);
+            });
             document.querySelectorAll('.stat-number').forEach((el, i) => {
-              setTimeout(() => animateCounter(el), i * 150);
+              setTimeout(() => animateCounter(el), i * 200);
             });
             statsObserver.disconnect();
           }
@@ -909,6 +944,121 @@
       }, { threshold: 0.3 });
       statsObserver.observe(statsSection);
     }
+
+    // ===== Typewriter Effect =====
+    (function() {
+      const el = document.getElementById('typewriter-text');
+      if (!el) return;
+      const words = ['Solutions', 'Products', 'Experiences', 'Platforms', 'Systems'];
+      let wordIdx = 0, charIdx = 0, deleting = false;
+
+      function type() {
+        const current = words[wordIdx];
+        if (!deleting) {
+          el.textContent = current.substring(0, charIdx + 1);
+          charIdx++;
+          if (charIdx === current.length) {
+            deleting = true;
+            setTimeout(type, 2000); // pause before deleting
+            return;
+          }
+          setTimeout(type, 100);
+        } else {
+          el.textContent = current.substring(0, charIdx - 1);
+          charIdx--;
+          if (charIdx === 0) {
+            deleting = false;
+            wordIdx = (wordIdx + 1) % words.length;
+            setTimeout(type, 400);
+            return;
+          }
+          setTimeout(type, 50);
+        }
+      }
+      // Start after splash screen
+      setTimeout(type, 3500);
+    })();
+
+    // ===== Parallax on Scroll =====
+    (function() {
+      const layers = document.querySelectorAll('.parallax-layer');
+      if (!layers.length) return;
+      window.addEventListener('scroll', () => {
+        const scrollY = window.pageYOffset;
+        layers.forEach(layer => {
+          const speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0.1;
+          const rect = layer.getBoundingClientRect();
+          const offset = (rect.top + scrollY) * speed;
+          layer.style.transform = `translateY(${scrollY * speed - offset}px)`;
+        });
+      }, { passive: true });
+    })();
+
+    // ===== Floating Particles Constellation =====
+    (function() {
+      const canvas = document.getElementById('particles-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      const particles = [];
+      const maxParticles = 60;
+      const connectDist = 120;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.5 + 0.5,
+          color: Math.random() > 0.5 ? 'rgba(196,30,42,' : 'rgba(184,134,11,'
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + '0.6)';
+          ctx.fill();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectDist) {
+              const alpha = (1 - dist / connectDist) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(196,30,42,' + alpha + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
 
     // ===== Animated Gradient Waves =====
     (function() {

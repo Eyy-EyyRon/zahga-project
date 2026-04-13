@@ -193,11 +193,11 @@ select {
 
 /* ===== Splash Screen ===== */
 #splash {
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition: opacity 0.6s ease, visibility 0.6s ease !important;
 }
 #splash.splash-fade-out {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 .splash-logo {

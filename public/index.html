@@ -89,70 +89,70 @@
       </a>
 
       <!-- Mobile Menu Toggle -->
-      <button id="mobile-toggle" class="md:hidden relative w-10 h-10 flex items-center justify-center text-white z-[60]">
-        <span id="hamburger-icon" class="transition-all duration-300">
-          <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="mobile-toggle" class="md:hidden relative w-10 h-10 flex items-center justify-center text-white" style="z-index:9999">
+        <span id="hamburger-icon" style="transition:all 0.3s ease">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </span>
-        <span id="close-icon" class="absolute inset-0 flex items-center justify-center opacity-0 scale-75 transition-all duration-300">
-          <i data-lucide="x" class="w-6 h-6"></i>
+        <span id="close-icon" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.75);transition:all 0.3s ease">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </span>
       </button>
     </div>
+  </nav>
 
-    <!-- Mobile Menu (full-screen overlay) -->
-    <div id="mobile-menu" class="md:hidden fixed inset-0 z-[55] pointer-events-none opacity-0 transition-opacity duration-300">
-      <div class="absolute inset-0 bg-brand-darker/98 backdrop-blur-2xl"></div>
-      <div class="relative h-full flex flex-col items-center justify-center">
-        <ul class="flex flex-col items-center gap-1 w-full max-w-xs">
-          <li class="mobile-item w-full" style="--delay: 0ms">
-            <a href="#home" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="home" class="w-5 h-5 text-brand-red"></i>
-              <span class="text-lg font-medium text-gray-200">Home</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full" style="--delay: 50ms">
-            <a href="#services" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="layers" class="w-5 h-5 text-brand-red"></i>
-              <span class="text-lg font-medium text-gray-200">Services</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full" style="--delay: 100ms">
-            <a href="#about" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="info" class="w-5 h-5 text-brand-gold"></i>
-              <span class="text-lg font-medium text-gray-200">About</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full" style="--delay: 150ms">
-            <a href="#team" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="users" class="w-5 h-5 text-brand-gold"></i>
-              <span class="text-lg font-medium text-gray-200">Team</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full" style="--delay: 200ms">
-            <a href="#process" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="git-branch" class="w-5 h-5 text-brand-silver"></i>
-              <span class="text-lg font-medium text-gray-200">Process</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full" style="--delay: 250ms">
-            <a href="#contact" class="mobile-link flex items-center gap-4 px-6 py-3.5 rounded-xl hover:bg-white/5 transition-all duration-300 w-full">
-              <i data-lucide="mail" class="w-5 h-5 text-brand-silver"></i>
-              <span class="text-lg font-medium text-gray-200">Contact</span>
-            </a>
-          </li>
-          <li class="mobile-item w-full mt-4" style="--delay: 300ms">
-            <a href="#contact" class="mobile-link flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 w-full">
-              Get Started
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </li>
-        </ul>
-        <div class="absolute bottom-10 flex items-center gap-3">
-          <img src="assets/Zahga.png" alt="ZAHGA" class="h-6 opacity-30" />
-        </div>
+  <!-- Mobile Menu (outside nav to avoid fixed-in-fixed issues) -->
+  <div id="mobile-menu" class="md:hidden" style="position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:0;transition:opacity 0.3s ease">
+    <div style="position:absolute;inset:0;background:rgba(10,10,15,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <ul style="display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:280px;padding:0 20px">
+        <li class="mobile-item" style="width:100%;--delay:0ms">
+          <a href="#home" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C41E2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">Home</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;--delay:50ms">
+          <a href="#services" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C41E2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">Services</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;--delay:100ms">
+          <a href="#about" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">About</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;--delay:150ms">
+          <a href="#team" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">Team</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;--delay:200ms">
+          <a href="#process" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 01-9 9"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">Process</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;--delay:250ms">
+          <a href="#contact" class="mobile-link" style="display:flex;align-items:center;gap:16px;padding:14px 24px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span style="font-size:18px;font-weight:500;color:#e5e7eb">Contact</span>
+          </a>
+        </li>
+        <li class="mobile-item" style="width:100%;margin-top:16px;--delay:300ms">
+          <a href="#contact" class="mobile-link" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#C41E2A;color:white;font-weight:600;padding:14px;border-radius:12px;width:100%;text-decoration:none;transition:background 0.3s">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </li>
+      </ul>
+      <div style="position:absolute;bottom:40px;display:flex;align-items:center;gap:12px">
+        <img src="assets/Zahga.png" alt="ZAHGA" style="height:24px;opacity:0.3" />
       </div>
     </div>
-  </nav>
+  </div>
 
   <!-- ===================== HERO ===================== -->
   <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 sm:pt-20 sm:pb-0">
@@ -656,20 +656,22 @@
     function toggleMenu() {
       menuOpen = !menuOpen;
       if (menuOpen) {
-        mobileMenu.classList.remove('pointer-events-none', 'opacity-0');
-        mobileMenu.classList.add('pointer-events-auto', 'opacity-100');
+        mobileMenu.style.pointerEvents = 'auto';
+        mobileMenu.style.opacity = '1';
         hamburgerIcon.style.opacity = '0';
         hamburgerIcon.style.transform = 'rotate(90deg) scale(0.5)';
         closeIcon.style.opacity = '1';
         closeIcon.style.transform = 'scale(1)';
         document.body.style.overflow = 'hidden';
-        document.querySelectorAll('.mobile-item').forEach(item => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0)';
+        document.querySelectorAll('.mobile-item').forEach((item, i) => {
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, i * 50);
         });
       } else {
-        mobileMenu.classList.add('pointer-events-none', 'opacity-0');
-        mobileMenu.classList.remove('pointer-events-auto', 'opacity-100');
+        mobileMenu.style.pointerEvents = 'none';
+        mobileMenu.style.opacity = '0';
         hamburgerIcon.style.opacity = '1';
         hamburgerIcon.style.transform = 'rotate(0) scale(1)';
         closeIcon.style.opacity = '0';

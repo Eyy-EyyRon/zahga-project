@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -66,6 +72,7 @@ html {
 /* ===== Smooth Section Transitions ===== */
 section {
   position: relative;
+  overflow-x: hidden;
 }
 
 /* ===== Form Input Focus Glow ===== */

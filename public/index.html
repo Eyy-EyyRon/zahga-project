@@ -607,8 +607,11 @@
   </section>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="border-t border-brand-border py-6 sm:py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <footer class="border-t border-brand-border py-6 sm:py-12 relative overflow-hidden">
+    <!-- Background image with dark overlay -->
+    <div class="absolute inset-0" style="background:url('assets/footer.webp') center/cover no-repeat"></div>
+    <div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-[2px]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-6">
         <div class="flex items-center gap-3">
           <img src="assets/Zahga.png" alt="ZAHGA" class="h-8" />

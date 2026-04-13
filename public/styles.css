@@ -265,76 +265,9 @@ select {
 
 /* All mobile (< 768px) */
 @media (max-width: 767px) {
-  /* Global section spacing */
-  section {
-    padding-top: 3.5rem !important;
-    padding-bottom: 3.5rem !important;
-  }
-  section .max-w-7xl,
-  footer .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  /* Hero section */
-  #home {
-    padding-top: 5rem !important;
-    padding-bottom: 2rem !important;
-    min-height: auto !important;
-  }
-  #home h1 {
-    font-size: 2.25rem !important;
-    line-height: 1.15 !important;
-  }
-  #home p.text-lg,
-  #home p.sm\:text-xl {
-    font-size: 1rem !important;
-  }
-
-  /* Services */
-  .service-card {
-    padding: 1.5rem !important;
-  }
-
-  /* About — features grid */
-  #about .grid-cols-2 {
-    grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
-  }
-  #about .bg-brand-card.p-10 {
-    padding: 2rem !important;
-  }
-
   /* Team cards */
   .team-card {
-    min-height: 360px !important;
-  }
-  .team-info {
-    padding: 0.75rem 1rem !important;
-  }
-
-  /* Process */
-  #process .grid {
-    gap: 0.75rem !important;
-  }
-
-  /* Contact form */
-  #contact-form {
-    padding: 1.25rem !important;
-  }
-
-  /* Footer */
-  footer {
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-  }
-
-  /* Section headings */
-  h2 {
-    font-size: 1.75rem !important;
-  }
-  .text-center.mb-16 {
-    margin-bottom: 2rem !important;
+    min-height: 340px !important;
   }
 
   /* Mobile menu responsive */
@@ -356,21 +289,6 @@ select {
 
 /* Extra-small screens (< 400px) */
 @media (max-width: 399px) {
-  #home h1 {
-    font-size: 1.8rem !important;
-    line-height: 1.15 !important;
-  }
-  h2 {
-    font-size: 1.5rem !important;
-  }
-  #home p.text-lg,
-  #home p.sm\:text-xl {
-    font-size: 0.875rem !important;
-  }
-  .service-card {
-    padding: 1.25rem !important;
-  }
-
   /* Splash screen */
   #splash .splash-logo img {
     width: 5rem;
@@ -382,15 +300,7 @@ select {
 
   /* Team cards smaller on tiny screens */
   .team-card {
-    min-height: 320px !important;
-  }
-
-  /* Stats grid */
-  #home .grid-cols-2 {
-    gap: 0.75rem !important;
-  }
-  #home .text-3xl {
-    font-size: 1.5rem !important;
+    min-height: 300px !important;
   }
 
   /* Mobile menu compact */
@@ -400,16 +310,6 @@ select {
   }
   #mobile-menu .mobile-link span {
     font-size: 15px !important;
-  }
-}
-
-/* Small screens (400px – 640px) */
-@media (min-width: 400px) and (max-width: 640px) {
-  #home h1 {
-    font-size: 2.5rem !important;
-  }
-  h2 {
-    font-size: 2rem !important;
   }
 }
 
